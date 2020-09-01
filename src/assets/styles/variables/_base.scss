@@ -3,5 +3,8 @@
 
 body {
   background-color: $white;
+  text-size-adjust: 100%;
+  color: $grayDark;
   font: $sizeDefault Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }

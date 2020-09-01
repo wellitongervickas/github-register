@@ -1,5 +1,5 @@
 <template>
-  <header class="header-bar">
+  <header class="header__bar">
     <logo />
   </header>
 </template>
@@ -18,7 +18,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
 
-.header-bar {
+.header__bar {
   border-bottom: 1px solid $gray;
   padding: $sizeDefault * 1.25 $sizeDefault * 2;
   display: flex;
