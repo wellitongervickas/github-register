@@ -1,5 +1,5 @@
 <template>
-  <img src="@/assets/images/logo.svg" alt="bcredi" />
+  <img src="@/assets/images/logo.svg" alt="Bcredi Crédito Descomplicado" height="24" width="75" />
 </template>
 
 <script>
