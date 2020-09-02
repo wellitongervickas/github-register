@@ -1,51 +1,107 @@
 <template>
   <div class="login">
     <section class="login__background">
-      <transition
-        name="fade"
-        appear
-      >
-        <div class="login__background__greeting">
-          <paragraph font-size="1.25rem">
-            "Obtive crédito para capital de giro. O processo foi bem
-            sucedido e tudo que foi abordado, foi cumprido."
-            <greeting prefix="Camila bragança" sufix="Sideral Tecnologia" />
-          </paragraph>
-        </div>
-      </transition>
+      <div class="login__greeting">
+        <paragraph font-size="1.25rem">
+          "Obtive crédito para capital de giro. O processo foi bem
+          sucedido e tudo que foi abordado, foi cumprido."
+          <greeting prefix="Camila bragança" sufix="Sideral Tecnologia" />
+        </paragraph>
+      </div>
     </section>
     <section class="login__content" key="content">
+      <header-bar key="header-bar">
+        <div class="login__alert">
+          <transition
+            name="slide-fade"
+            appear
+          >
+            <alert-inline v-if="alert.text" :type="alert.type">
+              {{ alert.text }}
+            </alert-inline>
+          </transition>
+        </div>
+      </header-bar>
       <transition
         name="fade"
         appear
       >
-        <header-bar key="header-bar" />
+        <main class="login__main">
+          <div key="intro">
+            <Heading type="h2" font-size="1.5rem" class="login__heading">
+              Criar meu cadastro
+            </Heading>
+            <paragraph>
+              Para acompanhar sua contratação de crédito você utilizará seu e-mail e CPF.
+            </paragraph>
+          </div>
+          <div key="form" class="login__form">
+            <former
+              :sections="sections"
+              :button="button"
+              @error="onError"
+              @submit="onSubmit"
+            />
+          </div>
+        </main>
       </transition>
-      <main class="login__content__main">
-        <Heading type="h2" font-size="1.5rem" class="login__content__heading">
-          Criar meu cadastro
-        </Heading>
-        <paragraph>
-          Para acompanhar sua contratação de crédito você utilizará seu e-mail e CPF.
-        </paragraph>
-      </main>
     </section>
   </div>
 </template>
 
 <script>
+import Former from '@/components/Form/Index.vue';
 import Greeting from '@/components/Greeting/Personal.vue';
 import Heading from '@/components/Typography/Heading.vue';
 import Paragraph from '@/components/Typography/Paragraph.vue';
 import HeaderBar from '@/components/Header/Bar.vue';
+import AlertInline from '@/components/Alert/Inline.vue';
+
+import sections from '@/views/Auth/sections';
 
 export default {
   name: 'views-auth-login',
   components: {
+    Former,
     Greeting,
     HeaderBar,
     Heading,
     Paragraph,
+    AlertInline,
+  },
+  data: () => ({
+    alert: {},
+    button: {
+      label: 'Cadastrar',
+      icon: 'lock',
+    },
+    sections: sections(),
+  }),
+  methods: {
+    setAlert(alert) {
+      this.alert = alert || {};
+
+      this.alertTimeout = setTimeout(() => {
+        this.alert = {};
+      }, 5000);
+    },
+
+    onError() {
+      this.setAlert({
+        text: 'Atenção! Verifique os campos preenchidos!',
+        type: 'danger',
+      });
+    },
+
+    onSubmit(payload) {
+      // eslint-disable-next-line no-console
+      console.log('submited: with:', payload);
+
+      this.setAlert({
+        text: 'Parabéns! Cadastro realizado com sucesso!',
+        type: 'success',
+      });
+    },
   },
 };
 </script>
@@ -56,55 +112,66 @@ export default {
 .login {
   display: flex;
   height: 100%;
-}
 
-.login__content {
-  flex: 2;
-  display: grid;
-  grid-template-rows: 4rem 1fr;
-  overflow-y: auto;
-}
-
-.login__content__main {
-  max-width: 340px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-
-  @media screen and (min-width: $breakPointWidescreen) {
-    text-align: center;
+  .login__content {
+    flex: 2;
+    display: grid;
+    grid-template-rows: 4rem 1fr;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-}
 
-.login__content__heading {
-  margin-bottom: 0.5rem;
-}
+  .login__alert {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
 
-.login__background {
-  flex: 1;
-  background: url('~@/assets/images/login-background.jpg') $grayDark center top no-repeat;
-  background-size: 100%;
-  display: flex;
-  align-items: flex-end;
-
-  .login__background__greeting {
-    width: 100%;
+  .login__main {
+    max-width: 340px;
+    margin: 0 auto;
     padding: 1.5rem;
-    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8), black);
-    display: flex;
-    justify-content: flex-end;
 
-    p {
-      text-align: right;
-      max-width: 80%;
-      color: $white;
+    .login__form {
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .login__heading {
+      margin-bottom: 0.5rem;
+    }
+
+    @media screen and (min-width: $breakPointTablet) {
+      text-align: center;
     }
   }
 
-  @media screen and (max-width: $breakPointWidescreen) {
-    display: none;
+  .login__background {
+    flex: 1;
+    background: url('~@/assets/images/login-background.jpg') $grayDark center top no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    max-width: 455px;
+
+    .login__greeting {
+      width: 100%;
+      padding: 1.5rem;
+      background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8), black);
+      display: flex;
+      justify-content: flex-end;
+
+      p {
+        text-align: right;
+        max-width: 80%;
+        color: $white;
+      }
+    }
+
+    @media screen and (max-width: $breakPointTablet) {
+      display: none;
+    }
   }
 }
-
 </style>

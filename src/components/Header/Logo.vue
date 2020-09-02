@@ -1,11 +1,16 @@
 <template>
-  <a
-    href="https://www.bcredi.com.br/"
-    target="_blank"
-    :title="title"
+  <transition
+    name="fade"
+    appear
   >
-    <img src="@/assets/images/logo.svg" :alt="title" height="24" width="75" />
-  </a>
+    <a
+      href="https://www.bcredi.com.br/"
+      target="_blank"
+      :title="title"
+    >
+      <img src="@/assets/images/logo.svg" :alt="title" height="24" width="75" />
+    </a>
+  </transition>
 </template>
 
 <script>
