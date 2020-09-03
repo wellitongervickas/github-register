@@ -3,11 +3,11 @@ import moment from 'moment';
 const localPattern = 'DD/MM/YYYY';
 
 const date = {
-  message: (value, options = {}) => {
+  message: (_value, options = {}) => {
     const { maxToday } = options;
 
     if (maxToday) {
-      return `A data deve ser menor que ${moment(value).format(localPattern)}`;
+      return `A data deve ser menor ou igual a ${moment(new Date()).format(localPattern)}`;
     }
 
     return 'Data inválida';

@@ -6,6 +6,7 @@
     >
       {{ field.label }}
     </form-label>
+
     <input
       class="input__field"
       v-model="value"
@@ -13,13 +14,24 @@
       :id="field.id"
       :name="field.id"
       :placeholder="field.placeholder"
-      :type="field.type"
+      :type="currentType || field.type"
 
       @input="onInput"
       @blur="onBlur"
     />
+
     <div v-if="error" class="form__error">
       {{ error }}
+    </div>
+
+    <div
+      v-if="field.type === 'password'"
+      class="input__icon"
+    >
+      <font-awesome-icon
+        @click="onChangePasswordType"
+        :icon="passwordIcon"
+      />
     </div>
   </fieldset>
 </template>
@@ -42,7 +54,16 @@ export default {
   data: () => ({
     value: '',
     error: '',
+    currentType: null,
   }),
+  computed: {
+    passwordIcon() {
+      return this.currentType === 'password' ? 'eye' : 'eye-slash';
+    },
+  },
+  mounted() {
+    this.currentType = this.field.type;
+  },
   methods: {
     required(field) {
       return !!(
@@ -50,6 +71,11 @@ export default {
           && field.validations.find((validation) => validation.type === 'blank')
       );
     },
+
+    onChangePasswordType() {
+      this.currentType = this.currentType === 'password' ? 'text' : 'password';
+    },
+
     onValidate(value) {
       const { field } = this;
       if (field.validations && field.validations) {
@@ -61,12 +87,22 @@ export default {
       }
       return null;
     },
+
     onBlur({ target }) {
       this.onValidate(target.value);
-      this.$emit('change', target.value);
+      this.change(target.value);
     },
+
     onInput({ target }) {
-      this.$emit('input', target.value);
+      this.input(target.value);
+    },
+
+    input(value) {
+      this.$emit('input', value);
+    },
+
+    change(value) {
+      this.$emit('change', value);
     },
   },
 };
@@ -79,6 +115,13 @@ export default {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  position: relative;
+
+  .input__icon {
+    position: absolute;
+    top: 2rem;
+    right: 0.9rem;
+  }
 
   .input__field {
     flex: 1;
