@@ -11,6 +11,7 @@
         :is="type(field.type)"
         :key="field.id"
         :field="field"
+        :class="classes(field)"
       />
     </div>
     <div class="form__button">
@@ -44,6 +45,13 @@ export default {
     },
   },
   methods: {
+    classes(field) {
+      const classes = [
+        `input--size-${field.size || 4}`,
+      ];
+
+      return classes;
+    },
     type(type) {
       if (['text', 'password', 'email', 'date', 'tel'].includes(type)) {
         return 'form-input';
@@ -51,6 +59,7 @@ export default {
 
       return 'span';
     },
+
     onSubmit() {
       const fields = this.$refs.field || [];
 
@@ -64,9 +73,11 @@ export default {
         this.error();
       }
     },
+
     submit(map) {
       this.$emit('submit', map);
     },
+
     error() {
       this.$emit('error');
     },
@@ -75,13 +86,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/_variables.scss";
+
 .form {
-  fieldset {
-    border: none;
+  .form__fields {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: wrap;
+    justify-content: space-between;
   }
 
-  .form__fields {
-    margin-bottom: 3rem;
+  .input--size-4 {
+    flex: 0 0 100%;
+  }
+
+  .input--size-2 {
+    flex: 0 0 45%;
+
+    @media screen and (max-width: $breakPointTablet) {
+      flex: 0 0 100%;
+    }
   }
 }
 </style>

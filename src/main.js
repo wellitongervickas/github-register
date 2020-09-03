@@ -8,6 +8,7 @@ import './registerServiceWorker';
 
 import '@/assets/styles/app.scss';
 import '@/config/icons';
+import '@/config/plugins';
 
 Vue.config.productionTip = false;
 

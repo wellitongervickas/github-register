@@ -5,6 +5,7 @@
 
   // sorry for accessibility
   outline: none;
+  text-decoration: none;
 }
 
 body, html, #app {
@@ -13,4 +14,11 @@ body, html, #app {
 
 img {
   max-width: 100%;
+}
+
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
 }

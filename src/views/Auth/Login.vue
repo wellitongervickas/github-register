@@ -43,6 +43,12 @@
               @submit="onSubmit"
             />
           </div>
+           <div class="login__signin">
+              já fiz meu cadastro.
+              <a href="#">
+                Entrar agora
+              </a>
+            </div>
         </main>
       </transition>
     </section>
@@ -132,14 +138,29 @@ export default {
     max-width: 340px;
     margin: 0 auto;
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: $breakPointMobile) {
+      max-width: 100%;
+    }
 
     .login__form {
-      margin-top: 1.5rem;
       text-align: left;
     }
 
     .login__heading {
       margin-bottom: 0.5rem;
+    }
+
+    .login__signin {
+      font-size: 0.8rem;
+      color: $warmGray;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      text-align: center;
+      border-top: 1px solid $gray;
     }
 
     @media screen and (min-width: $breakPointTablet) {

@@ -12,11 +12,10 @@ export default function sections() {
   }, {
     id: 'cpf',
     label: 'CPF',
-    placeholder: 'Informe seu CPF',
-    mask: [{
-      type: 'cpf',
-    }],
+    placeholder: '000.000.000-00',
+    mask: '###.###.###-##',
     type: 'tel',
+    size: 2,
     validations: [{
       type: 'blank',
     }, {
@@ -26,6 +25,7 @@ export default function sections() {
     id: 'birthdate',
     label: 'Data de aniversário',
     type: 'date',
+    size: 2,
     placeholder: 'DD/MM/AAAA',
     validations: [{
       type: 'blank',
@@ -40,6 +40,9 @@ export default function sections() {
     placeholder: 'Informe sua senha',
     validations: [{
       type: 'blank',
+    }, {
+      type: 'greaterThan',
+      count: 6,
     }],
   }];
 }

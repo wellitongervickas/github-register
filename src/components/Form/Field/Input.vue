@@ -1,5 +1,5 @@
 <template>
-  <fieldset class="input">
+  <div class="input">
     <form-label
       :id="field.id"
       :required="required(field)"
@@ -8,13 +8,17 @@
     </form-label>
 
     <input
-      class="input__field"
+      :class="classes"
       v-model="value"
+
+      ref="field"
+
+      v-mask="mask"
 
       :id="field.id"
       :name="field.id"
       :placeholder="field.placeholder"
-      :type="currentType || field.type"
+      :type="currentType"
 
       @input="onInput"
       @blur="onBlur"
@@ -33,7 +37,7 @@
         :icon="passwordIcon"
       />
     </div>
-  </fieldset>
+  </div>
 </template>
 
 <script>
@@ -59,6 +63,18 @@ export default {
   computed: {
     passwordIcon() {
       return this.currentType === 'password' ? 'eye' : 'eye-slash';
+    },
+    mask() {
+      return this.field.mask || null;
+    },
+    classes() {
+      const classes = ['input__field'];
+
+      if (this.error) {
+        classes.push('input__field-state--error');
+      }
+
+      return classes;
     },
   },
   mounted() {
@@ -111,7 +127,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/_variables.scss";
 
-.input{
+.input {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -123,6 +139,10 @@ export default {
     right: 0.9rem;
   }
 
+  .input__icon {
+    cursor: pointer;
+  }
+
   .input__field {
     flex: 1;
     width: 100%;
@@ -130,9 +150,14 @@ export default {
     border: 1px solid $gray;
     line-height: 2.4rem;
     padding: 0 1rem;
+    max-height: 2.5rem;
 
     &::placeholder {
       color: $warmGray;
+    }
+
+    &.input__field-state--error {
+      border: 1px solid $red;
     }
   }
 

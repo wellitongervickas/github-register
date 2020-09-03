@@ -12,6 +12,7 @@ const date = {
 
     return 'Data inválida';
   },
+
   validate: (value = null, options = {}) => {
     if ([null, undefined, ''].includes(value)) {
       return date.message();
