@@ -150,6 +150,7 @@ export default {
     border: 1px solid $gray;
     line-height: 2.4rem;
     padding: 0 1rem;
+    min-height: 2.5rem;
     max-height: 2.5rem;
 
     &::placeholder {

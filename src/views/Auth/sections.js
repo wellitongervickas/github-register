@@ -23,7 +23,7 @@ export default function sections() {
     }],
   }, {
     id: 'birthdate',
-    label: 'Data de aniversário',
+    label: 'Data de nascimento',
     type: 'date',
     size: 2,
     placeholder: 'DD/MM/AAAA',
