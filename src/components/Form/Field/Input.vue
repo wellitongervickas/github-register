@@ -20,6 +20,8 @@
       :placeholder="field.placeholder"
       :type="currentType"
 
+      v-bind="options"
+
       @input="onInput"
       @blur="onBlur"
     />
@@ -75,6 +77,15 @@ export default {
       }
 
       return classes;
+    },
+    options() {
+      const options = {};
+
+      if (this.field.type === 'date') {
+        options.maxlength = 8;
+      }
+
+      return options;
     },
   },
   mounted() {
@@ -132,6 +143,10 @@ export default {
   flex-direction: column;
   margin-bottom: 1rem;
   position: relative;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 
   .input__icon {
     position: absolute;

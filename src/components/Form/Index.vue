@@ -14,8 +14,13 @@
         :class="classes(field)"
       />
     </div>
+    <div class="form__footer">
+      <slot name="footer" />
+    </div>
     <div class="form__button">
-      <form-button type="submit" :icon="button.icon">{{ button.label }}</form-button>
+      <form-button type="submit" :icon="button.icon" :disabled="disabled">
+        {{ button.label }}
+      </form-button>
     </div>
   </form>
 </template>
@@ -42,6 +47,10 @@ export default {
       type: Array,
       required: true,
       default: () => [],
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -95,6 +104,10 @@ export default {
     align-items: flex-start;
     flex-flow: wrap;
     justify-content: space-between;
+  }
+
+  .form__footer {
+    margin-bottom: 1rem;
   }
 
   .input--size-4 {

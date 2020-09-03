@@ -39,9 +39,15 @@
             <former
               :sections="sections"
               :button="button"
+              :disabled="!isTermChecked"
+
               @error="onError"
               @submit="onSubmit"
-            />
+            >
+              <template #footer>
+                <terms-policy @check="onTermCheck" />
+              </template>
+            </former>
           </div>
            <div class="login__signin">
               já fiz meu cadastro.
@@ -56,6 +62,7 @@
 </template>
 
 <script>
+import TermsPolicy from '@/components/Terms/Policy.vue';
 import Former from '@/components/Form/Index.vue';
 import Greeting from '@/components/Greeting/Personal.vue';
 import Heading from '@/components/Typography/Heading.vue';
@@ -74,6 +81,7 @@ export default {
     Heading,
     Paragraph,
     AlertInline,
+    TermsPolicy,
   },
   data: () => ({
     alert: {},
@@ -81,6 +89,7 @@ export default {
       label: 'Cadastrar',
       icon: 'lock',
     },
+    isTermChecked: false,
     sections: sections(),
   }),
   methods: {
@@ -97,6 +106,10 @@ export default {
         text: 'Atenção! Verifique os campos preenchidos!',
         type: 'danger',
       });
+    },
+
+    onTermCheck(bool) {
+      this.isTermChecked = bool;
     },
 
     onSubmit(payload) {
@@ -135,7 +148,7 @@ export default {
   }
 
   .login__main {
-    max-width: 340px;
+    max-width: 360px;
     margin: 0 auto;
     padding: 1.5rem;
     display: flex;

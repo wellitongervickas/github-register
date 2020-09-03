@@ -1,5 +1,9 @@
 <template>
-  <button :class="classes" :type="type">
+  <button
+    :class="classes"
+    :type="type"
+    :disabled="disabled"
+  >
     <font-awesome-icon v-if="icon" :icon="icon" />
     <span class="button__text">
       <slot />
@@ -25,6 +29,10 @@ export default {
       validator(value) {
         return ['blue'].includes(value);
       },
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -61,6 +69,11 @@ export default {
     flex: 1;
     text-align: center;
     font-weight: $bold;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
   }
 
   &:active {
