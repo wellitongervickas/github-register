@@ -1,4 +1,4 @@
-# bcredi
+# Register vuejs
 
 ## Project setup
 ```
