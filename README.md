@@ -1,4 +1,5 @@
-# Register vuejs
+# Github Register Vuejs
+A github screen to fake sign up 
 
 ## Project setup
 ```
