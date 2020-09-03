@@ -161,6 +161,7 @@ export default {
 
     .login__form {
       text-align: left;
+      margin-top: 1rem;
     }
 
     .login__heading {

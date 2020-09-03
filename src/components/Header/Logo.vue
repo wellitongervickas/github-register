@@ -4,11 +4,11 @@
     appear
   >
     <a
-      href="https://www.bcredi.com.br/"
+      href="#"
       target="_blank"
       :title="title"
     >
-      <img src="@/assets/images/logo.svg" :alt="title" height="24" width="75" />
+      <img src="@/assets/images/logo.png" :alt="title" height="30" />
     </a>
   </transition>
 </template>
@@ -18,7 +18,7 @@
 export default {
   name: 'components-header-logo',
   data: () => ({
-    title: 'Bcredi Crédito Descomplicado',
+    title: 'Welliton gervickas on Github',
   }),
 };
 </script>
