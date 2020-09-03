@@ -1,5 +1,5 @@
 const blank = {
-  message: () => 'Campo obrigatório',
+  message: () => 'Required field',
   validate: (value = null) => {
     if ([null, undefined, ''].includes(value)) {
       return blank.message();

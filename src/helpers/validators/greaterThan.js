@@ -1,7 +1,7 @@
 const greaterThan = {
   message: (value, options = {}) => {
     const count = options.count || 0;
-    return `Deve ser maior que ${count} caracteres`;
+    return `Must be greater than ${count} characters`;
   },
 
   validate: (value = null, options = {}) => {

@@ -3,9 +3,10 @@
     <section class="login__background">
       <div class="login__greeting">
         <paragraph font-size="1.25rem">
-          "Obtive crédito para capital de giro. O processo foi bem
-          sucedido e tudo que foi abordado, foi cumprido."
-          <greeting prefix="Camila bragança" sufix="Sideral Tecnologia" />
+            "GitHub is a development platform inspired by the way you work.
+            open source to business, you can host and review code,
+            projects, and build software alongside 50 million developers.
+          <greeting prefix="GitHub" sufix="github.com" />
         </paragraph>
       </div>
     </section>
@@ -29,10 +30,11 @@
         <main class="login__main">
           <div key="intro">
             <Heading type="h2" font-size="1.5rem" class="login__heading">
-              Criar meu cadastro
+              Get started for free
             </Heading>
             <paragraph>
-              Para acompanhar sua contratação de crédito você utilizará seu e-mail e CPF.
+              join the millions of developers already using GitHub
+              to share their code, work together, and build amazing things.
             </paragraph>
           </div>
           <div key="form" class="login__form">
@@ -50,9 +52,9 @@
             </former>
           </div>
            <div class="login__signin">
-              já fiz meu cadastro.
+              Already registered.
               <a href="#">
-                Entrar agora
+                Sign in now
               </a>
             </div>
         </main>
@@ -86,7 +88,7 @@ export default {
   data: () => ({
     alert: {},
     button: {
-      label: 'Cadastrar',
+      label: 'Sign up',
       icon: 'lock',
     },
     isTermChecked: false,
@@ -103,7 +105,7 @@ export default {
 
     onError() {
       this.setAlert({
-        text: 'Atenção! Verifique os campos preenchidos!',
+        text: 'Warning! Check this form again',
         type: 'danger',
       });
     },
@@ -117,7 +119,7 @@ export default {
       console.log('submited: with:', payload);
 
       this.setAlert({
-        text: 'Parabéns! Cadastro realizado com sucesso!',
+        text: 'Success! You is a new member now!',
         type: 'success',
       });
     },

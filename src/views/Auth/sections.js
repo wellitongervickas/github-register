@@ -2,7 +2,7 @@ export default function sections() {
   return [{
     id: 'email',
     label: 'E-mail',
-    placeholder: 'Informe seu e-mail',
+    placeholder: 'Type your e-mail',
     type: 'email',
     validations: [{
       type: 'blank',
@@ -11,7 +11,7 @@ export default function sections() {
     }],
   }, {
     id: 'cpf',
-    label: 'CPF',
+    label: 'Document (CPF)',
     placeholder: '000.000.000-00',
     mask: '###.###.###-##',
     type: 'tel',
@@ -23,7 +23,7 @@ export default function sections() {
     }],
   }, {
     id: 'birthdate',
-    label: 'Data de nascimento',
+    label: 'Birthdate',
     type: 'date',
     size: 2,
     placeholder: 'DD/MM/AAAA',
@@ -36,8 +36,8 @@ export default function sections() {
   }, {
     id: 'password',
     type: 'password',
-    label: 'Senha',
-    placeholder: 'Informe sua senha',
+    label: 'Password',
+    placeholder: 'Type your password',
     validations: [{
       type: 'blank',
     }, {

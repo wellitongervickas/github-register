@@ -4,7 +4,7 @@
     appear
   >
     <a
-      href="#"
+      href="https://github.com/wellitongervickas"
       target="_blank"
       :title="title"
     >

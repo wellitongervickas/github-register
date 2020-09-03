@@ -4,8 +4,8 @@
       <form-checkbox @change="check" />
     </div>
     <div>
-      Li e estou de acordo com a <a>Política de privacidade</a>
-      e a <a>Política de Uso de Informações</a>
+      I'm agree to our <a>Terms of service</a>
+      and <a>Privacy Statement.</a> We’ll occasionally send you account related emails.
     </div>
   </div>
 </template>
@@ -32,9 +32,11 @@ export default {
 .term__policy {
   font-size: 0.7rem;
   color: $warmGray;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.3rem;
   border: 1px solid $gray;
+
+  line-height: 1rem;
 
   display: flex;
   justify-content: space-between;

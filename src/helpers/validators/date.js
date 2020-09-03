@@ -7,10 +7,10 @@ const date = {
     const { maxToday } = options;
 
     if (maxToday) {
-      return `A data deve ser menor ou igual a ${moment(new Date()).format(localPattern)}`;
+      return `Date must be lass than or equal to ${moment(new Date()).format(localPattern)}`;
     }
 
-    return 'Data inválida';
+    return 'Invalid date';
   },
 
   validate: (value = null, options = {}) => {
