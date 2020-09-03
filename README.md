@@ -1,6 +1,16 @@
 # Github Register Vuejs
 A github screen to fake sign up 
 
+## Libraries
+* Vuejs
+* Vue CLI
+* Eslint
+* Jest
+* Sass
+
+## Style Guides
+* airbnb javascript
+
 ## Project setup
 ```
 yarn install
@@ -26,6 +36,3 @@ yarn test:unit:watch
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
