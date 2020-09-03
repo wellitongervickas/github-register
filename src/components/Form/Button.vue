@@ -3,6 +3,8 @@
     :class="classes"
     :type="type"
     :disabled="disabled"
+
+    @click="click"
   >
     <font-awesome-icon v-if="icon" :icon="icon" />
     <span class="button__text">
@@ -44,6 +46,11 @@ export default {
       }
 
       return classes;
+    },
+  },
+  methods: {
+    click() {
+      this.$emit('click');
     },
   },
 };

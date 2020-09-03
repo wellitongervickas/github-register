@@ -26,9 +26,9 @@
       @blur="onBlur"
     />
 
-    <div v-if="error" class="form__error">
+    <span v-if="error" class="form__error">
       {{ error }}
-    </div>
+    </span>
 
     <div
       v-if="field.type === 'password'"

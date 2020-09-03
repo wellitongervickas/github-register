@@ -18,7 +18,11 @@
       <slot name="footer" />
     </div>
     <div class="form__button">
-      <form-button type="submit" :icon="button.icon" :disabled="disabled">
+      <form-button
+        :icon="button.icon"
+        :disabled="disabled"
+        @click="onSubmit"
+      >
         {{ button.label }}
       </form-button>
     </div>
@@ -45,7 +49,6 @@ export default {
     },
     sections: {
       type: Array,
-      required: true,
       default: () => [],
     },
     disabled: {
@@ -88,7 +91,7 @@ export default {
     },
 
     error() {
-      this.$emit('error');
+      this.$emit('error', true);
     },
   },
 };

@@ -2,10 +2,10 @@
   <div class="login">
     <section class="login__background">
       <div class="login__greeting">
-        <paragraph font-size="1.25rem">
-            "GitHub is a development platform inspired by the way you work.
-            open source to business, you can host and review code,
-            projects, and build software alongside 50 million developers.
+        <paragraph>
+          "GitHub is a development platform inspired by the way you work.
+          open source to business, you can host and review code,
+          projects, and build software alongside 50 million developers.
           <greeting prefix="GitHub" sufix="github.com" />
         </paragraph>
       </div>
@@ -105,7 +105,7 @@ export default {
 
     onError() {
       this.setAlert({
-        text: 'Warning! Check this form again',
+        text: 'Warning! Check this form fields and try again',
         type: 'danger',
       });
     },
@@ -119,7 +119,7 @@ export default {
       console.log('submited: with:', payload);
 
       this.setAlert({
-        text: 'Success! You is a new member now!',
+        text: 'Success! You are a new member now!',
         type: 'success',
       });
     },

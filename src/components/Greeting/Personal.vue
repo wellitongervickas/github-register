@@ -1,6 +1,6 @@
 <template>
   <div class="greeting__personal">
-    <strong>{{prefix}}, </strong>
+    <strong>{{prefix}}</strong>
     <span>{{sufix}}</span>
   </div>
 </template>
