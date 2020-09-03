@@ -1,8 +1,5 @@
 import {
   mount,
-  // shallowMount,
-  // createLocalVue,
-  // RouterLinkStub,
 } from '@vue/test-utils';
 
 import '@/config/plugins';
@@ -10,18 +7,8 @@ import '@/config/icons';
 
 import Form from '@/components/Form/Index.vue';
 import FormButton from '@/components/Form/Button.vue';
+import FormCheckbox from '@/components/Form/Field/Checkbox.vue';
 import FormInput from '@/components/Form/Field/Input.vue';
-
-// // Add Library Icons
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faCheck } from '@fortawesome/free-solid-svg-icons';
-
-// library.add(faCheck);
-
-// const localVue = createLocalVue();
-
-// localVue.component('font-awesome-icon', FontAwesomeIcon);
 
 describe('Form', () => {
   test('is a Vue instance', () => {
@@ -105,6 +92,24 @@ describe('Form', () => {
 
     expect(wrapper.emitted('error')[0]).toEqual([true]);
     expect(wrapper.emitted('submit')).toBeFalsy();
+  });
+});
+
+describe('Form Checkbox', () => {
+  test('is a vue instance', () => {
+    const wrapper = mount(FormCheckbox);
+    expect(wrapper.vm).toBeTruthy();
+  });
+
+  test('checkbox emit change to be checked', async () => {
+    const wrapper = mount(FormCheckbox);
+    const checkElement = wrapper.find('.checkbox__field');
+
+    checkElement.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted('change')).toBeTruthy();
+    expect(wrapper.emitted('change')[0]).toEqual([true]);
   });
 });
 
